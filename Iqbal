@@ -1,0 +1,73 @@
+
+class KnowledgeBase:
+    def __init__(self):
+        self.facts = []
+
+    def add_fact(self, fact):
+        self.facts.append(fact)
+
+    def get_related_people(self, person, relation):
+        related_people = []
+        for fact in self.facts:
+            if person == fact[0] and relation == fact[1]:
+                related_people.append(fact[2])
+        return related_people
+
+# Create a knowledge base and add some facts
+kb = KnowledgeBase()
+kb.add_fact(("Anto", "is_parent_of", "Budi"))
+kb.add_fact(("Wati", "is_parent_of", "Budi"))
+kb.add_fact(("Anto", "is_parent_of", "Ita"))
+kb.add_fact(("Wati", "is_parent_of", "Ita"))
+kb.add_fact(("Anto", "is_parent_of", "Ida"))
+kb.add_fact(("Wati", "is_parent_of", "Ida"))
+kb.add_fact(("Deni", "is_parent_of", "Hadi"))
+kb.add_fact(("Ita", "is_parent_of", "Hadi"))
+kb.add_fact(("Budi", "is_parent_of", "Dina"))
+kb.add_fact(("Ida", "is_parent_of", "Andi"))
+kb.add_fact(("Ida", "is_parent_of", "Rita"))
+kb.add_fact(("Rudi", "is_parent_of", "Andi"))
+kb.add_fact(("Rudi", "is_parent_of", "Rita"))
+
+kb.add_fact(("Ita", "is_sibling_of", "Budi"))
+kb.add_fact(("Ita", "is_sibling_of", "Ida"))
+kb.add_fact(("Andi", "is_sibling_of", "Rita"))
+
+kb.add_fact(("Deni", "is_paman_of", "Dina"))
+kb.add_fact(("Deni", "is_paman_of", "Andi"))
+kb.add_fact(("Deni", "is_paman_of", "Rita"))
+kb.add_fact(("Budi", "is_paman_of", "Hadi"))
+kb.add_fact(("Budi", "is_paman_of", "Rita"))
+kb.add_fact(("Rudi", "is_paman_of", "Hadi"))
+kb.add_fact(("Rudi", "is_paman_of", "Dina"))
+
+kb.add_fact(("Ita", "is_bibi_of", "Dina"))
+kb.add_fact(("Ita", "is_bibi_of", "Andi"))
+kb.add_fact(("Ita", "is_bibi_of", "Rita"))
+kb.add_fact(("Ida", "is_bibi_of", "Hadi"))
+kb.add_fact(("Ida", "is_bibi_of", "Dina"))
+
+kb.add_fact(("Anto", "is_kakek_of", "Hadi"))
+kb.add_fact(("Anto", "is_kakek_of", "Dina"))
+kb.add_fact(("Anto", "is_kakek_of", "Andi"))
+kb.add_fact(("Anto", "is_kakek_of", "Rita"))
+
+kb.add_fact(("Wati", "is_nenek_of", "Hadi"))
+kb.add_fact(("Wati", "is_nenek_of", "Dina"))
+kb.add_fact(("Wati", "is_nenek_of", "Andi"))
+kb.add_fact(("Wati", "is_nenek_of", "Rita"))
+
+kb.add_fact(("Hadi", "is_sepupu_of", "Dina"))
+kb.add_fact(("Hadi", "is_sepupu_of", "Andi"))
+kb.add_fact(("Hadi", "is_sepupu_of", "Rita"))
+
+# Query the knowledge base
+person = "Hadi"
+relation = "is_sepupu_of"
+related_people = kb.get_related_people(person, relation)
+
+if related_people:
+    print(f"{person} {relation} {', '.join(related_people)}")
+else:
+    print(f"No information found about {person} {relation}")
+1
